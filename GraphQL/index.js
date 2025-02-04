@@ -9,6 +9,7 @@ import { typeDefs } from "./schema.js";
 
 const resolvers = {
   Query: {
+    // these resolvers are like normal function
     games() {
       return _db.games
     },
@@ -18,6 +19,7 @@ const resolvers = {
     reviews() {
       return _db.reviews
     },
+    // these resolvers are like normal function with arguments
     review(_, args) {
       return _db.reviews.find((review) => review.id===args.id)
     },
@@ -31,6 +33,7 @@ const resolvers = {
   // relationships
   // "Game" is a specific resolver for Game type from schema
   // resolvers that specify how to get related data based on the parent entity:
+  // in GraphQl, data population is being made manually
   Game: {
     reviews(parent) {
       return _db.reviews.filter((r) => r.game_id === parent.id)
