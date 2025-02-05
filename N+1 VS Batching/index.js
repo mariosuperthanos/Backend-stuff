@@ -6,6 +6,12 @@ import _db from "./_db.js";
 import DataLoader from "dataloader";
 import { groupBy, map } from "ramda";
 
+// The main issue is that it results in N+1 database requests:
+// 1 request is made for fetching the games,
+// and N additional requests are made to retrieve the reviews for each game (1 request per game).
+// Solution: Internally, collect all game IDs into an array and make a single database query
+// to fetch the reviews that correspond to any of the game IDs in that array.
+
 const resolvers = {
   Query: {
     // what to return when "games" query is being sent
