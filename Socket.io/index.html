@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.IO Demo</title>
+    <style>
+      body {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+        width: 90%;
+        max-width: 1200px;
+      }
+
+      #message-container {
+        border: 1px solid black;
+        flex-grow: 1;
+        overflow-y: auto;
+      }
+
+      #message-container div {
+        background-color: #ccc;
+        padding: 5px;
+      }
+
+      #form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+        width: 50%;
+        max-width: 500px;
+        background-color: #f8f9fa;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #form label {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      #form input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+      }
+
+      #form button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      #form button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Socket.IO</h1>
+    <div id="message-container"></div>
+    <form id="form">
+      <label for="message-input">Message</label>
+      <input type="text" id="message-input" />
+      <button type="submit" id="send-button">Send</button>
+      <label for="room-input">Room</label>
+      <input type="text" id="room-input" />
+      <button type="button" id="room-button">Join</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/dist/bundle.js" type="module"></script>
+    <!-- <script>
+      const socket = io();
+      console.log(socket);
+    </script> -->
+  </body>
+</html>
